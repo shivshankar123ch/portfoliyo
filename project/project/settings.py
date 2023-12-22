@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import django_heroku
+# import django_heroku
 from pathlib import Path
 from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-y-it&0w78hf(9sk+7c_0vjfug$%sl*dk^_&-lehm20e-h-%e!z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
 
 
 # Application definition
@@ -77,8 +77,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfolio',
+        'HOST':'localhost',
+        'USER':'postgres',
+        'PASSWORD':'root'
     }
 }
 
@@ -123,7 +126,10 @@ STATIC_URL = '/static/'
 
 import os
 STATICFILES_DIRS =[
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR,'static'),
+    # STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
+
+
 ]
 
 MEDIA_URL = '/media/'
